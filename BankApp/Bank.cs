@@ -11,20 +11,21 @@ namespace BankApp
         private string _name;
         private List<Account> _accounts;
 
+        internal List<Account> Accounts { get => _accounts; set => _accounts = value; }
+
         //Constructor
         public Bank(string name, List<Account> accounts)
         {
             _name = name;
-            _accounts = accounts;
+            Accounts = accounts;
         }
 
         //Overload constructor
         public Bank(string name)
         {
             _name = name;
-            _accounts = new List<Account>();
+            Accounts = new List<Account>();
         }
-
 
         //methods
         public string CreateAccount()
@@ -36,13 +37,13 @@ namespace BankApp
             {
                 rndAccount += rnd.Next(0, 10);
             }
-            _accounts.Add(new Account(rndAccount));
+            Accounts.Add(new Account(rndAccount));
             return rndAccount;
         }
 
         public bool AddTransactionForCustomer(string accountNumber, Transaction transaction)
         {
-            return (from account in _accounts
+            return (from account in Accounts
                     where account.AccountNumber == accountNumber
                     select account).First().AddTransaction(transaction);
         }
@@ -50,9 +51,21 @@ namespace BankApp
         //Get account info
         public double GetBalanceForCustomer (string accountNumber)
         {
-            return (from account in _accounts
+            return (from account in Accounts
                     where account.AccountNumber == accountNumber
                     select account).FirstOrDefault().Balance;
         }
+        // Printtaa tapahtumat ajalta
+        public List<Transaction> GetTransactionsForCustomerForTimeSpan(string accountNumber,
+            DateTime startTime, DateTime endTime)
+        {
+            return Accounts.FirstOrDefault(a => a.AccountNumber == accountNumber)
+                .GetTransactionForTimeSpan(startTime, endTime);
+
+            //return (from account in _accounts
+            //        where account.AccountNumber == accountNumber
+            //        select account).FirstOrDefault().GetTransactionsForTimeSpan(startTime, endTime);
+        }
+
     }
 }

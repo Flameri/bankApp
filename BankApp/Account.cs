@@ -47,5 +47,13 @@ namespace BankApp
             }
             return res;
         }
+        public List<Transaction> GetTransactionForTimeSpan(DateTime startTime, DateTime endTime)
+        {
+            List<Transaction> res = (from transaction in _transactions
+                                     where transaction.Timestamp >= startTime && transaction.Timestamp <= endTime
+                                     orderby transaction.Timestamp
+                                     select transaction).ToList();
+            return res;
+        }
     }
 }

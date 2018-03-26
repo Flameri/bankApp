@@ -14,19 +14,21 @@ namespace BankApp
         //Constructor
         public Customer(string firstName, string lastName, string accountNumber)
         {
-            _firstName = firstName;
-            _lastName = lastName;
+            FirstName = firstName;
+            LastName = lastName;
             AccountNumber = accountNumber;
         }
 
         public string AccountNumber { get => _accountNumber; set => _accountNumber = value; }
+        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
 
         //Override Tostring
         public override string ToString()
         {
-            return ($"Etunimi {_firstName}" +
-                $"Sukunimi {_lastName}" +
-                $"Tilinumero {AccountNumber}");
+            return ($"Etunimi {FirstName}, " +
+                $"Sukunimi {LastName}, " +
+                $"Tilinumero {AccountNumber}\n");
         }
     }
 
