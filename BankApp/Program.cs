@@ -28,7 +28,7 @@ namespace BankApp
             }
 
             //tilitapahtumien lisääminen 
-            for(int i = 0; i <70; i++)
+            for(int i = 0; i <200; i++)
             {
                 Random rnd = new Random();
                 bank1.AddTransactionForCustomer(customers[rnd.Next(0,3)].AccountNumber,
@@ -62,6 +62,7 @@ namespace BankApp
             Console.WriteLine("{0} - balance: {1}{2:0.00}",
                 customer.ToString(), balance >= 0 ? "+" : "", balance);
 
+            //toinen tapa tehdä
             //if (balance >= 0)
             //    Console.WriteLine($"{customer.ToString()} - balance: + {balance:C}");
             //else
@@ -82,6 +83,7 @@ namespace BankApp
             }
             Console.WriteLine("\n");
         }
+        //toinen tapa tehdä
         //if (transactions[i].Sum > 0)
         //Console.WriteLine($"{transactions[i].TimeStamp.ToShortDateString()}\t" +
         //                    $"{transactions.[i].Sum:F}");  

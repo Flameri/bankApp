@@ -62,6 +62,7 @@ namespace BankApp
             return Accounts.FirstOrDefault(a => a.AccountNumber == accountNumber)
                 .GetTransactionForTimeSpan(startTime, endTime);
 
+            //toinen tapa tehdä
             //return (from account in _accounts
             //        where account.AccountNumber == accountNumber
             //        select account).FirstOrDefault().GetTransactionsForTimeSpan(startTime, endTime);

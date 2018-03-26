@@ -20,8 +20,5 @@ namespace BankApp
 
         public double Sum { get => _sum; set => _sum = value; }
         public DateTime Timestamp { get => _timeStamp; set => _timeStamp = value; }
-
-        //private void Transaction()
-        //{
     }
 }
